@@ -12,7 +12,7 @@
 
 CC	   	:= g++
 NAME   	:= phonebook
-CFLAGS 	:= -Wall -Wextra -Werror -g -I./includes
+CFLAGS 	:= -Wall -Wextra -Werror -g -I.
 STD    	:= -std=c++98 -pedantic
 SOURCE 	:= $(shell find . -type f -name '*.cpp')
 OBJECTS := $(SOURCE:.cpp=.o)
