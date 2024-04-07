@@ -15,11 +15,10 @@ class Contact {
         
         Contact();
         ~Contact();
-
-        void initialize(unsigned char index);
-        void display();
+        
+        void initialize(short int index);
+        void show();
         std::string to_string();
-
 };
 
 #endif

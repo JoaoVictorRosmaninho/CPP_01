@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jv <jv@student.42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 22:20:41 by jv                #+#    #+#             */
+/*   Updated: 2024/04/04 22:39:20 by jv               ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "input.hpp"
+#include "phonebook.hpp"
 
 std::string Input::read_line_from_std() {
     while (true) {
         std::cout << "> ";
         
-        getline(std::cin, this->input, '\n');
+        std::cin >> this->input;
 
         if (std::cin.eof())
             std::cin.clear();
@@ -26,8 +39,7 @@ std::string Input::read_contact_info(std::string text) {
     do {
         std::cout << text << std::flush;
 
-        getline(std::cin, info, '\n');
-        
+        std::cin >> info;
         if (std::cin.good() && !info.empty()) {
             valid = true;
         }  
@@ -39,6 +51,21 @@ std::string Input::read_contact_info(std::string text) {
     } while (!valid);
 
     return  info;
+}
+
+short int Input::read_contact_index() {
+    short int index = -1;
+
+    while(true) {
+        std::cout << "Insert the contact index: " << std::flush;
+        std::cin  >> index;
+
+        if (index >= 0 && index <= MAX_CONTACTS)
+            return index;
+        std::cin.clear();
+        std::cout << "Index out of range, please re-enter" << std::endl;
+    }
+    return (index);
 }
 
 bool Input::valid_input() {

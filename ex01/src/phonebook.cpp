@@ -6,7 +6,7 @@
 /*   By: jv <jv@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 22:41:50 by jv                #+#    #+#             */
-/*   Updated: 2024/04/04 00:09:15 by jv               ###   ########.fr       */
+/*   Updated: 2024/04/04 22:16:14 by jv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,19 @@ void Phonebook::add_contacts() {
 void Phonebook::display_list()  {
     std::cout << "------------- PHONBOOK CONTACTS -------------" << std::endl;
     
-    for (unsigned char i = 0; i < this->position; i++) {
+    for (short int i = 0; i < this->position; i++) {
         std::cout << "| " << std::setw(10) << this->contacts[i].index             << std::flush;
         std::cout << "| " << std::setw(10) << format(this->contacts[i].name)      << std::flush;
         std::cout << "| " << std::setw(10) << format(this->contacts[i].last_name) << std::flush;
         std::cout << "| " << std::setw(10) << format(this->contacts[i].nickname)  << "|" << std::flush;
         std::cout << std::endl;
     }
+
+    show_contact_info(Input::read_contact_index());
+}
+
+void Phonebook::show_contact_info(short int index) {
+    this->contacts[index].show();
 }
 
 std::string Phonebook::format(std::string text) {

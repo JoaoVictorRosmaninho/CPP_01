@@ -6,7 +6,7 @@
 /*   By: jv <jv@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:53:13 by jv                #+#    #+#             */
-/*   Updated: 2024/04/03 23:03:53 by jv               ###   ########.fr       */
+/*   Updated: 2024/04/04 22:30:36 by jv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ std::string Contact::to_string() {
     return representation;
 }
 
-void Contact::initialize(unsigned char index) {
+void Contact::initialize(short int index) {
     this->index          = index;
     this->name           = Input::read_contact_info("Please enter your first name: ");
     this->last_name      = Input::read_contact_info("Please enter your last name: ");
@@ -43,6 +43,11 @@ void Contact::initialize(unsigned char index) {
     this->darkest_secret = Input::read_contact_info("Please enter your darkest secret: ");
 }
 
-void Contact::display() {
-        
+void Contact::show() {
+        std::cout << "name:"      << this->name  << std::endl;
+        std::cout << "last name:" << this->last_name << std::endl;
+        std::cout << "nickname:"  << this->nickname   << std::endl;
+        std::cout << "phone number:"   << this->phone_number << std::endl;
+        std::cout << "darkest secret:" << this->darkest_secret << std::endl;
+        std::cin.clear();
 }
